@@ -39,6 +39,11 @@ tkl_numpad := False
 }
 #HotIf
 
+; With ANSI keyboard in mind (ANSI lacks the ISO layout key for < and > between the LeftShift and the Z keys):
+; Get < and > by pressing ALT along 8 and 9
+!8::<
+!9::>
+
 ; Next changes have some drawbacks so maybe its better to keep them commented out.
 ; ANSI keyboards do not have the key for < and > between the LeftShift and the Z keys as in ISO keyboards.
 ; So I tried to simulate this key when detecting that LeftShift were pressed alone, so that I could get < and > 
