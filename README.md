@@ -2,7 +2,7 @@
 
 Permitir que '+', '*' y '-' expandan/colapsen las carpetas en el explorador de archivos tal como lo harían en el NumPad.
 Habilitar/deshabilitar con CTRL+F12 la simulación del teclado numérico con los botones de la zona derecha.
-
+Usado con AutoHotKey v2.0.2
 
 Shift & common '+' made equivalent to '*' (as usual), but '*' from the Numpad, so that Windows recognises it to expand folders (recursively).
 Common '+' made equivalent to '+' (as usual), but '+' from the Numpad, so that Windows recognises it to expand folders.
