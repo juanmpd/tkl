@@ -50,6 +50,6 @@ tkl_numpad := False
 ; in an ANSI keyboard as I would with an ISO keyboard. But also while keeping it 'modifier' behaviour if pressed
 ; along another key... except that it does not works with more complex combinations as Ctrl-LShift-<any_other>
 ; Maybe that can be sorted out, but in the meantime...
-;LShift & F1::return  ; Make left-shift a prefix by using it in front of "&" at least once.
-;LShift::<
-;>+LShift::>
+LShift & F1::return  ; Make left-shift a prefix by using it in front of "&" at least once.
+LShift::<
+>+LShift::>
