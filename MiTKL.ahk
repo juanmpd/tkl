@@ -44,12 +44,11 @@ tkl_numpad := False
 !8::<
 !9::>
 
-; Next changes have some drawbacks so maybe its better to keep them commented out.
+; Next changes are targeted for spanish market
 ; ANSI keyboards do not have the key for < and > between the LeftShift and the Z keys as in ISO keyboards.
 ; So I tried to simulate this key when detecting that LeftShift were pressed alone, so that I could get < and > 
 ; in an ANSI keyboard as I would with an ISO keyboard. But also while keeping it 'modifier' behaviour if pressed
-; along another key... except that it does not works with more complex combinations as Ctrl-LShift-<any_other>
-; Maybe that can be sorted out, but in the meantime...
+; along another key
 LShift & F1::return  ; Make left-shift a prefix by using it in front of "&" at least once.
 ; No podemos usar '~', porque entonces al '<' le añade el propio tratamiento de Shift, que sería convertirlo a su mayúscula, que es '>'
 #HotIf GetKeyState('RShift')
