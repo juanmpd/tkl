@@ -2,7 +2,7 @@
 
 Pensado en poder programar con la misma comodidad que en un teclado ISO español de tamaño completo.
 
-![teclado_numpad](https://github.com/juanmpd/tkl/assets/45386331/c0c14ee8-514f-4605-aa4a-3c6acde178a3)
+![teclado_numpad](https://github.com/juanmpd/tkl/assets/45386331/72b8f6dd-9319-46db-83fe-6747324ae73f)
 Probado con AutoHotKey v2.0.2
 ¿Qué ofrece?
 * Pensando en las teclas que faltan en un teclado TKL:
