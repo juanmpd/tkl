@@ -49,11 +49,16 @@ tkl_numpad := False
 ; So I tried to simulate this key when detecting that LeftShift were pressed alone, so that I could get < and > 
 ; in an ANSI keyboard as I would with an ISO keyboard. But also while keeping it 'modifier' behaviour if pressed
 ; along another key
-LShift & F1::return  ; Make left-shift a prefix by using it in front of "&" at least once.
-; No podemos usar '~', porque entonces al '<' le añade el propio tratamiento de Shift, que sería convertirlo a su mayúscula, que es '>'
 #HotIf GetKeyState('RShift')
 LShift::>
 #HotIf
 #HotIf not(GetKeyState('RShift'))
-LShift::Send "<"
+~LShift::{
+	startTime := A_TickCount
+	KeyWait('LShift') ; Wait for release
+	elapsedTime := A_TickCount - startTime
+	if (elapsedTime < 200) { ; Cuando queremos el símbolo < seguramente pulsemos rápido. Si se mantiene más rato suele ser por estar pensando en combinar SHIFT con otra cosa y al final arrepentirnos	
+		Send "<"
+	}
+}
 #HotIf
