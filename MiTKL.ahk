@@ -1,4 +1,9 @@
-﻿; Shift & common '+' made equivalent to '*' (as usual), but '*' from the Numpad, so that it Windows recognises it to expand folders (recursively)
+﻿; NOTE: When running a remote desktop session, not everything works as expected. Somethings work only if not at fullscreen, somethings don't work at
+; all. This happens with CTRL+F12, ALT+8, ALT+9, LShift without RShift... This is probably related to the remote desktop session shortcut keys configuration
+; see https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc783638(v=ws.10)?redirectedfrom=MSDN).
+; So, in this cases, it is best to run AutoHotKey in the remote desktop session itself. 
+
+; Shift & common '+' made equivalent to '*' (as usual), but '*' from the Numpad, so that it Windows recognises it to expand folders (recursively)
 ++::NumpadMult
 ; Common '+' made equivalent to '+' (as usual), but '+' from the Numpad, so that Windows recognises it to expand folders
 +::NumpadAdd
@@ -49,16 +54,21 @@ tkl_numpad := False
 ; So I tried to simulate this key when detecting that LeftShift were pressed alone, so that I could get < and > 
 ; in an ANSI keyboard as I would with an ISO keyboard. But also while keeping it 'modifier' behaviour if pressed
 ; along another key
-#HotIf GetKeyState('RShift')
+#HotIf GetKeyState('RShift') && !WinActive("ahk_exe mstsc.exe")
 LShift::>
 #HotIf
 #HotIf not(GetKeyState('RShift'))
 ~LShift::{
-	startTime := A_TickCount
-	KeyWait('LShift') ; Wait for release
-	elapsedTime := A_TickCount - startTime
-	if (elapsedTime < 200) { ; Cuando queremos el símbolo < seguramente pulsemos rápido. Si se mantiene más rato suele ser por estar pensando en combinar SHIFT con otra cosa y al final arrepentirnos	
-		Send "<"
+	; If running a remote desktop session, it is best to also run autohotkey remotely. For this to work,
+	; we should avoid running this piece of code locally, as it has been found to interfere with the
+	; remote session resulting in unwanted behaviour.
+	if !WinActive("ahk_exe mstsc.exe") {
+		KeyWait('LShift') ; Wait for release
+		; Si hemos pulsado LShift porque queremos '<', no habremos pulsado nada antes de soltar LShift, y en general
+		; lo pulsaremos y soltaremos rápido. Si se mantiene más rato suele ser por estar pensando en combinar SHIFT con otra cosa y al final arrepentirnos	
+		if ((A_PriorKey=='LShift') && (A_TimeSinceThisHotkey < 200)) {	
+			Send "<"
+		}
 	}
 }
 #HotIf
