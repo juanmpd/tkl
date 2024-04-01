@@ -45,6 +45,12 @@ tkl_numpad := False
 #HotIf
 
 ; With ANSI keyboard in mind (ANSI lacks the ISO layout key for < and > between the LeftShift and the Z keys):
+; Get < and > by pressing ALT-GR along z and x (as in spanish layout under Linux)
+<^>!z::<
+<^>!x::>
+; Get < and > by pressing ALT along , and . (where it would be located were it a english keyboard)
+!,::<
+!.::>
 ; Get < and > by pressing ALT along 8 and 9
 !8::<
 !9::>
