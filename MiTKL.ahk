@@ -55,12 +55,13 @@ tkl_numpad := False
 !8::<
 !9::>
 
+/*
 ; Next changes are targeted for spanish market
 ; ANSI keyboards do not have the key for < and > between the LeftShift and the Z keys as in ISO keyboards.
 ; So I tried to simulate this key when detecting that LeftShift were pressed alone, so that I could get < and > 
 ; in an ANSI keyboard as I would with an ISO keyboard. But also while keeping it 'modifier' behaviour if pressed
 ; along another key
-#HotIf GetKeyState('RShift') && !WinActive("ahk_exe mstsc.exe")
+ #HotIf GetKeyState('RShift') && !WinActive("ahk_exe mstsc.exe")
 LShift::>
 #HotIf
 #HotIf not(GetKeyState('RShift'))
@@ -78,3 +79,4 @@ LShift::>
 	}
 }
 #HotIf
+ */
